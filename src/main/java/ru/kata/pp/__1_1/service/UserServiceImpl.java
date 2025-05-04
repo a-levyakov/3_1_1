@@ -1,8 +1,8 @@
 package ru.kata.pp.__1_1.service;
 
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.kata.pp.__1_1.dao.UserDao;
 import ru.kata.pp.__1_1.model.User;
 
@@ -37,13 +37,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public User showUserById(int id) {
         return userDAO.showUserById(id);
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public List<User> getAllUsers() {
         return userDAO.getAllUsers();
     }
